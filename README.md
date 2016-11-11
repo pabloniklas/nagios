@@ -6,7 +6,8 @@ All this work is under the GNU License.
 ## used_space.py
 
 ### Description
-Based on a work of http://stackoverflow.com/users/376587/giampaolo-rodol%c3%a0
+Based on a work of [Giampaolo Rodol](http://stackoverflow.com/users/376587/giampaolo-rodol%c3%a0).
+
 It gives the occupied space in any filesystem, or all the mounted filesystems in the system.
 
 ### Usage
