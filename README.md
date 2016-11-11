@@ -25,12 +25,12 @@ Example:
 or 
 
 ```bash
-./used_space.py -w <warning_level> -c <critical_level> -p <mount point>
+./used_space.py -w <warning_level> -c <critical_level> -p <mount point1> -p <mount point2> ...
 ```
 
 Example 
 
 ```bash
-./used_space.py -w 80 -c 10 -p /
+./used_space.py -w 80 -c 10 -p / -p /var -p /tmp 
 ```
 
