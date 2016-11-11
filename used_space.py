@@ -113,14 +113,14 @@ def main(argv):
         for fs in fsarg:
             fslist.append(find_partition_by_name(fs))
 
-    printf("<!-- Comienzo salida sensor nagios -->")
+    printf("<!-- BEGIN Sensor Output -->")
 
     printf("<table border='0' width='100%%' class='status'>")
 
     printf("<tr>")
     printf("<th class='status'>Status</th>")
     printf("<th class='status'>Filesystem</th>")
-    printf("<th class='status'>Ocupado %%</th>")
+    printf("<th class='status'>Occupied %%</th>")
     printf("</tr>")
 
     for part in fslist:
@@ -151,7 +151,7 @@ def main(argv):
         nro += 1
 
     printf("</table>")
-    printf("<!-- Fin salida sensor nagios -->")
+    printf("<!-- END Sensor Output -->")
 
     return rc_code
 
