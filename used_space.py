@@ -80,8 +80,8 @@ def printf(format, *args):
 
 
 def main(argv):
-    warning = 0
-    critical = 0
+    warning = 80    # Defaults
+    critical = 90   # Defaults
 
     fsarg = []
 
@@ -89,12 +89,12 @@ def main(argv):
         opts, args = getopt.getopt(argv, "hw:c:p:", ["warning=", "critical=", "partition="])
 
     except getopt.GetoptError:
-        print 'used_space.py -w <warning_level> -c <critical_level>'
+        print('used_space.py -w <warning_level> -c <critical_level>')
         sys.exit(3)
 
     for opt, arg in opts:
         if opt == '-h':
-            print 'used_space.py -w <warning_level> -c <critical_level>'
+            print('used_space.py -w <warning_level> -c <critical_level>')
             sys.exit(3)
         elif opt in ("-w", "--warning"):
             warning = round(float(arg), 0)
