@@ -132,10 +132,10 @@ def main(argv):
             clase = "statusOdd"
 
         if (percent >= warning) and (percent < critical):
-            claseStatus, trc, texto = "statusBGWARNING", 1, "Warning"
+            claseStatus, trc, texto = "statusWARNING", 1, "WARNING"
         else:
             if percent >= critical:
-                claseStatus, trc, texto = "statusBGCRITICAL", 2, "Critical"
+                claseStatus, trc, texto = "statusCRITICAL", 2, "CRITICAL"
             else:
                 claseStatus, trc, texto = "statusOK", 0, "OK"
 
