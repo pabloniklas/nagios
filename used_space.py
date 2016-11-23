@@ -6,6 +6,7 @@
 # http://stackoverflow.com/users/376587/giampaolo-rodol%c3%a0
 #
 # 20161110 - PSRN - Initial Version.
+# 20161123 - PSRN - Do not process missing fs.
 #
 
 import os
@@ -28,8 +29,8 @@ def disk_partitions(all=False):
             phydevs.append(line.strip())
 
     retlist = []
-    f = open('/etc/mtab', "r")
-    for line in f:
+
+    for line in open('/etc/mtab', "r"):
         if not all and line.startswith('none'):
             continue
         fields = line.split()
@@ -47,13 +48,21 @@ def disk_partitions(all=False):
 
 def find_partition_by_name(name):
 
-    for line in open("/etc/mtab").readlines():
+    for line in open("/etc/mtab", "r").readlines():
 
-        if name == line.split()[1].strip():
+        if not all and line.startswith('none'):
+            continue
 
-            device = line.split()[0].strip()
-            mountpoint = line.split()[1].strip()
-            fstype = line.split()[2].strip()
+        fields = line.split()
+
+        if name == fields[1].strip():
+
+            device = fields[0]
+            mountpoint = fields[1]
+            fstype = fields[2]
+
+            if device == 'none':
+                device = ''
 
             return disk_ntuple(device, mountpoint, fstype)
 
@@ -111,7 +120,9 @@ def main(argv):
     else:
         fslist = []
         for fs in fsarg:
-            fslist.append(find_partition_by_name(fs))
+            aux = find_partition_by_name(fs)
+            if aux != None:
+                fslist.append(aux)
 
     printf("<!-- BEGIN Sensor Output -->")
 
